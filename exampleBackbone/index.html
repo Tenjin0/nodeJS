@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form id="new-person">
+<label>FirstName:</label><input id="firstName" type="text" />
+<label>LastName:</label><input id="lastName" type="text" />
+<button>Post</button>
+</form>
+<hr />
+<ul></ul>
+<ul id="person-container"></ul>
+<div id="message">ceci est un message de test</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script src="/underscore.js"></script> -->
+<!-- <script src="/backbone.js"></script> -->
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+<script>
+	//(function($){
+    // Your code goes here
+	var person = Backbone.Model.extend({
+	  // Default todo attribute values
+	  defaults: {
+	    firstName: '',
+	    lastName: ''
+	  },
+
+	  initialize: function(){
+	    console.log('This model has been initialized.');
+	    this.on('change:lastName', function(){
+	        console.log('lastName value for this model has changed.');
+	    });
+	  }
+
+	});
+
+	var personList = Backbone.Collection.extend({
+	model: person
+	});
+
+	var personView = Backbone.View.extend({
+
+		//model: new person(),
+		el: '#person-container',
+		initialize: function() {
+			this.template = _.template($('#value-template').html());
+			this.render();
+		},
+		render: function() {
+			// this.$el.empty();
+			console.log('render', this.model.toJSON());
+			this.$el.html(this.template(this.model.toJSON()));
+			//this.$el.append(this.persontemplate({firstName: 'hello Backbone', lastName:'bye bye world'}));
+			//this.$el.html(this.template(this.model.toJSON());
+			//this.$el.append("<h1>My APP</h1>");
+			// this.listView = new listView();
+			// this.$el.append(this.listView.render().$el);
+			return this;
+		}
+	});
+
+	var listView = Backbone.View.extend({
+
+		el: $('#person-container'),
+		initialize: function(){
+			 this.template: _.template($('#value-template').html());
+			 this.render();
+
+			//this.$el.html(this.template );
+		},
+
+		render: function(){
+
+			this.$el.empty();
+			this.$el.append(this.persontemplate({firstName: 'hello Backbone', lastName:'bye bye world'}));
+			// this.$el.append('<li>Hello</li>');
+			// this.$el.append('<li>Goodbye</li>');
+			return this;
+		}
+	});
+
+	$(document).ready(function(){
+		//var p2 = new person({firstName:'Patrice', lastName:'PETIT'});
+		var plist = new personList();
+		//var pv = new personView();
+		//pv.model = p2;
+		//plist.add(p2);
+		$('#new-person').submit(function(ev){
+			//console.log($('#new-person').val());
+			var p = new person({firstName:$('#firstName').val(), lastName:$('#lastName').val()});
+			//console.log('firstName', p.get('firstName'));
+		    //$('#person-container').text(p.get('firstName'));
+			pv = new personView({model: p});
+
+			//plist.add(p);
+			//pv.model = p;
+			console.log('person', p);
+			console.log('personView', pv);
+			//console.log(plist.toJSON());
+			return false;
+		});
+	});
+
+//})(jQuery);
+</script>
+
+<script type="text/template" id="value-template">
+	<li><%= firstName %>, <%= lastName %></li>
+
+</script>
+<script type="text/template" id="person-template">
+	<span class="author"><%= firstName %>:</span>
+	<span class="status"><%= lastName %></span>
+	<a href="#" class="edit">[edit]</a>
+	<a href="#" class="delete">[delete]</a>
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "bar.js",
+  "sourceRoot": "",
+  "sources": [
+    "bar.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA;AAAA"
+}

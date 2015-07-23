@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title id="title">Bienvenue </title>
+    </head>
+    <body>
+        <h1>Chat en temps réel !</h1>
+        <!-- <form id="formulaire" action="" methode="post"> -->
+        <p>
+            <label for="message">Message:</label>
+            <input type="text"  id="message" placeholder="Votre message..." size="50" autofocus />
+            <input type="button" value="valider" id="bValider"/>
+        </p>
+        <!-- </form> -->
+        <section id='chat'>
+
+        </section>        
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect();
+            // alert(socket.pseudo);
+                //alert(socket.pseudo);
+            var pseudo = prompt('Quel est votre pseudo ?');
+            socket.emit('nouveauPseudo', pseudo);
+            socket.pseudo = pseudo;
+            // var pseudo;
+            // if (socket.pseudo == "undefined"){
+            //     //socket.pseudo = pseudo;
+
+            // } else {
+            //     pseudo = socket.pseudo;
+            // }
+            socket.on('disconnect', function() {
+                console.log('disconnnecteeee');
+            });
+            socket.on('nouveauPseudo', function(pseudo){
+                $('#chat').prepend(pseudo + ' vient de se connecter\n' + '<br/>');
+            });
+            socket.on('pseudo', function(pseudo){
+                $('#title').append(pseudo);
+            });
+            socket.on('message',function(message){
+                // $('#chat').append(socket.pseudo + ': ');
+                $('#chat').prepend(message + '<br/>');
+            });
+            
+           </script>
+           <script>
+           $('#bValider').click(
+            function myFunction(){
+                var message = $('#message').val();          
+                //alert(message);    
+                socket.emit('message', message);
+                // $('#chat').append(socket.pseudo + ': ');
+                // $('#chat').append(message);
+                // $('#chat').append('<br/>');
+                $('#message').val('');
+                // return false;
+            });  
+            
+            function myFunction2(ele){
+                if(event.keyCode == 13) {
+                    alert(ele.value);        
+                }
+                return false;
+            };
+        $(window).on('beforeonload', function(){
+            socket.close();
+        });
+        </script>
+    </body>
+</html>
