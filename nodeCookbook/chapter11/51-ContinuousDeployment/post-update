@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd /root/login
-env -i git pull loginrepo master
-
-exec forever restart /root/login/app.js
-
