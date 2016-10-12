@@ -1,4 +1,5 @@
 BeginningNode/exercice/apache-jmeter-2.13
+BeginningNode/chapter1/webstorm/.idea
 BeginningNode/chapter6/node_modules
 BeginningNode/chapter7/node_modules
 BeginningNode/chapter9/node_modules
@@ -20,3 +21,5 @@ verifImage/node_modules
 exercice/beginningNode/node_modules
 exercice/realTimeChat/bower_components
 exercice/realTimeChat/node_modules
+initiation/node_modules
+node_modules

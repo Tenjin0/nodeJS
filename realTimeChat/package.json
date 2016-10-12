@@ -1,0 +1,17 @@
+{
+  "name": "realTimeChat",
+  "version": "1.0.0",
+  "description": "A realTime chat with node v1",
+  "main": "index.js",
+  "scripts": {
+    "test": "node lib/test.js"
+  },
+  "repository": {},
+  "author": "Patrice PETIT <petitpatrice@gmail.com> (http://www.patriceit96.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "mime": "^1.3.4",
+    "socket.io": "^1.3.5"
+  }
+}
