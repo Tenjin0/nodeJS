@@ -1,7 +1,7 @@
 module.exports = {
     "env": {
-        "node": true,
         "browser": true,
+        "node": true,
         "commonjs": true,
         "es6": true
     },
@@ -14,17 +14,9 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "require-jsdoc"
+        "react"
     ],
     "rules": {
-        "require-jsdoc": [0, {
-            "require": {
-                "FunctionDeclaration": true,
-                "MethodDefinition": false,
-                "ClassDeclaration": false
-            }
-        }],
         "no-console": 0,
         "indent": [
             "error",
@@ -34,13 +26,13 @@ module.exports = {
             "error",
             "unix"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
+        // "quotes": [
+        //     "error",
+        //     "single"
+        // ],
         "semi": [
             "error",
             "always"
-        ]
+]
     }
 };

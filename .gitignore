@@ -23,3 +23,8 @@ exercice/realTimeChat/bower_components
 exercice/realTimeChat/node_modules
 initiation/node_modules
 node_modules
+*/nodes_modules
+*/.vscode
+Livre/nodeCookbook/exercice/.vscode/
+hackham.angular/architecture-service-pipe/.vscode
+hackham.angular/architecture-service-pipe/node_modules

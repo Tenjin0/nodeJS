@@ -1,0 +1,8 @@
+.head {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+}
+.head .col-xs-3 {
+    padding:8px;
+
+}

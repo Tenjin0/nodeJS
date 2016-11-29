@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  ul
+    each user in users
+      li
+        p 
+          span #{user.name} #{user.first_name}
+          a(href= "/users/" + user._id) &nbsp;edit
+    else
+      li There are no users

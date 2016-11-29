@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    form(method="POST", action='/users/'+ user._id + "?_method=PUT")
+        //- input(name="_method", type="hidden", value="PUT")
+        fieldset
+            legend User
+            p
+                label(for="user[name]") Username:
+                input(type='text', name="user[name]", value=user.name)
+            p
+                label(for="user[first_name]") FirstName:
+                input(type="text", name="user[first_name]", value=user.first_name)
+            input(type="submit" name="submit")

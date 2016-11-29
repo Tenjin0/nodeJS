@@ -1,0 +1,8 @@
+.body{
+    vertical-align: bottom;
+    border-bottom: 1px solid #ddd;
+}
+.body  .column{
+    padding:8px;
+    
+}

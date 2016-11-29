@@ -1,0 +1,18 @@
+<div>
+  <br/>
+  <button class="btn btn-sm" *ngIf="!isAddingNewPerson" (click)="isAddingNewPerson=!isAddingNewPerson">Ajouter une personne</button>
+  <app-new-person *ngIf="isAddingNewPerson" (onSubmitted)="onSubmit($event)" (onCancelled)="onCancel()"></app-new-person>
+</div>
+<br>
+<hr/>
+<br>
+<div class="row head">
+  <div class="col-xs-3">Firstname</div>
+  <div class="col-xs-3">Lastname</div>
+  <div class="col-xs-3">Age</div>
+  <div class="col-xs-3">Action</div>
+</div>
+<div class="row" *ngFor="let person of people">
+  <app-profile [person] ="person"  (onDeleted)="onDelete($event)"></app-profile>
+</div>
+

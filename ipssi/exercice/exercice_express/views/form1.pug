@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    
+    form(method="POST" action="/form/showPost")
+        legend user
+        fieldset
+            p
+                label(for="user[name]") Username:
+                input(type="text", name="user[name]")
+            p
+                label(for="user[first_name]") FirstName:
+                input(type="text", name="user[first_name]")
+            input(type="submit")
